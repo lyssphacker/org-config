@@ -1,0 +1,80 @@
+* Org initialization
+** Lexical Lisp
+#+BEGIN_SRC emacs-lisp
+;;; -*- lexical-binding: t -*-
+#+END_SRC
+
+* User Interface
+** Emacs Look
+#+BEGIN_SRC emacs-lisp
+(if (boundp 'menu-bar-mode)
+    (menu-bar-mode -1))
+(if (boundp 'tool-bar-mode)
+    (tool-bar-mode -1))
+(if (boundp 'scroll-bar-mode)
+    (scroll-bar-mode -1))
+#+END_SRC
+
+I love the empty-lines notification. However, it does seem to fail on the very last line? I haven’t solved this yet.
+
+#+BEGIN_SRC emacs-lisp
+(set-default 'indicate-empty-lines t)
+#+END_SRC
+
+This adds line numbers and column numbers in the emacs modeline. Fucking essential.
+#+BEGIN_SRC emacs-lisp
+(line-number-mode 1)
+(column-number-mode 1)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp 
+(load-theme 'wombat t)
+#+END_SRC
+
+* Copy Without selection
+#+BEGIN_SRC emacs-lisp
+(defun get-point (symbol &optional arg)
+  "get the point"
+  (funcall symbol arg)
+  (point))
+     
+(defun copy-thing (begin-of-thing end-of-thing &optional arg)
+  "Copy thing between beg & end into kill ring."
+  (save-excursion
+    (let ((beg (get-point begin-of-thing 1))
+	  (end (get-point end-of-thing arg)))
+      (copy-region-as-kill beg end))))
+     
+(defun paste-to-mark (&optional arg)
+  "Paste things to mark, or to the prompt in shell-mode."
+  (unless (eq arg 1)
+    (if (string= "shell-mode" major-mode)
+	(comint-next-prompt 25535)
+      (goto-char (mark)))
+    (yank)))
+
+(defun copy-word (&optional arg)
+  "Copy words at point into kill-ring"
+  (interactive "P")
+  (copy-thing 'backward-word 'forward-word arg))
+
+(defun copy-line (&optional arg)
+  "Save current line into Kill-Ring without mark the line "
+  (interactive "P")
+  (copy-thing 'beginning-of-line 'end-of-line arg)
+  (paste-to-mark arg))
+#+END_SRC
+* Other
+** Hide emphasis markers
+#+BEGIN_SRC emacs-lisp
+(setq org-hide-emphasis-markers t)
+#+END_SRC
+** Better Header Bullets
+#+BEGIN_SRC emacs-lisp
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+#+END_SRC
+
+
+
+
