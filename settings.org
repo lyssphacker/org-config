@@ -58,11 +58,15 @@ This adds line numbers and column numbers in the emacs modeline. Fucking essenti
   (interactive "P")
   (copy-thing 'backward-word 'forward-word arg))
 
+(global-set-key (kbd "C-c w") (quote copy-word))
+
 (defun copy-line (&optional arg)
   "Save current line into Kill-Ring without mark the line "
   (interactive "P")
   (copy-thing 'beginning-of-line 'end-of-line arg)
   (paste-to-mark arg))
+
+(global-set-key (kbd "C-c l") (quote copy-line))
 #+END_SRC
 * Other
 ** Hide emphasis markers
