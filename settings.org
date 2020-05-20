@@ -78,7 +78,9 @@ This adds line numbers and column numbers in the emacs modeline. Fucking essenti
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 #+END_SRC
-
-
-
-
+** Custom Timestamp Format
+#+BEGIN_SRC emacs-lisp
+(setq-default org-display-custom-times t)
+(setq org-time-stamp-custom-formats 
+  '("<%d %b %Y %a" . "<%d %b %Y %a %H:%M>"))
+#+END_SRC
