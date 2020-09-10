@@ -28,6 +28,7 @@
 ; load up the main file
 (require 'ob)
 (require 'org)
+(require 'dired)
 (message (org-version))
 (org-babel-load-file (expand-file-name "settings.org" dotfiles-dir))
 
