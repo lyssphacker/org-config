@@ -108,3 +108,8 @@ This adds line numbers and column numbers in the emacs modeline. Fucking essenti
 
 (define-key dired-mode-map [mouse-3] 'dired-mouse-find-file)
 #+END_SRC
+** Indentation of code in code blocks
+#+BEGIN_SRC emacs-lisp
+(setq org-src-preserve-indentation nil)
+(setq org-edit-src-content-indentation 0)
+#+END_SRC
