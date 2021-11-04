@@ -113,3 +113,7 @@ This adds line numbers and column numbers in the emacs modeline. Fucking essenti
 (setq org-src-preserve-indentation nil)
 (setq org-edit-src-content-indentation 0)
 #+END_SRC
+** Make mouse-1 behave like RET
+#+BEGIN_SRC emacs-lisp
+(define-key dired-mode-map [mouse-1] 'dired-find-file)
+#+END_SRC
