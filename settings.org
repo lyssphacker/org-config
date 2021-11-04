@@ -74,8 +74,8 @@ This adds line numbers and column numbers in the emacs modeline. Fucking essenti
 #+END_SRC
 ** Better Header Bullets
 #+BEGIN_SRC emacs-lisp
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(require 'org-superstar)
+(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 #+END_SRC
 ** Custom Timestamp Format
 #+BEGIN_SRC emacs-lisp
