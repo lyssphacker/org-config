@@ -117,3 +117,8 @@ This adds line numbers and column numbers in the emacs modeline. Fucking essenti
 #+BEGIN_SRC emacs-lisp
 (define-key dired-mode-map [mouse-1] 'dired-find-file)
 #+END_SRC
+** Hide leading starts
+#+BEGIN_SRC emacs-lisp
+(setq org-hide-leading-stars nil)
+(setq org-superstar-leading-bullet ?\s)
+#+END_SRC
