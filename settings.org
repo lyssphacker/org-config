@@ -122,3 +122,8 @@ This adds line numbers and column numbers in the emacs modeline. Fucking essenti
 (setq org-hide-leading-stars nil)
 (setq org-superstar-leading-bullet ?\s)
 #+END_SRC
+** Define custom date-time format
+#+BEGIN_SRC emacs-lisp
+(setq-default org-display-custom-times t)
+(setq org-time-stamp-custom-formats '("<%a %b %e %Y>" . "<%a %b %e %Y %H:%M>"))
+#+END_SRC
