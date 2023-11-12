@@ -127,3 +127,7 @@ This adds line numbers and column numbers in the emacs modeline. Fucking essenti
 (setq-default org-display-custom-times t)
 (setq org-time-stamp-custom-formats '("<%a %b %e %Y>" . "<%a %b %e %Y %H:%M>"))
 #+END_SRC
+** Enable Org Indent mode
+#+BEGIN_SRC emacs-lisp
+(setq org-startup-indented t)
+#+END_SRC
